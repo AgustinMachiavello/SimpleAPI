@@ -18,10 +18,15 @@ class TaskModelDetailSerializer(serializers.ModelSerializer):
 class TaskModelListSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Task
-		fields = ('id', 'title', 'creation_date', 'author',)
+		fields = '__all__'
 
 
 class TaskModelCreateSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Task
 		fields = ('title', )
+
+class TaskModelDeleteSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Task
+		field = ('id',)

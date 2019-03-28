@@ -7,11 +7,13 @@ from ..accounts.serializers import (
 	TaskModelDetailSerializer,
 	TaskModelListSerializer,
 	TaskModelCreateSerializer,
+	TaskModelDeleteSerializer,
 )
 from rest_framework.generics import (
 	ListAPIView,
 	RetrieveAPIView,
 	CreateAPIView,
+	DestroyAPIView,
 )
 
 
@@ -36,4 +38,8 @@ class TaskModelCreateAPIView(CreateAPIView):
 
 	def perform_create(self, serializer: TaskModelCreateSerializer):
 		serializer.save(author=self.request.user)
+
+class TaskModelDeleteAPIView(DestroyAPIView):
+	queryset = Task
+	serializer_class = TaskModelDeleteSerializer
 
